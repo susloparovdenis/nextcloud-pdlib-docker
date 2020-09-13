@@ -87,8 +87,13 @@ RUN echo memory_limit=2048M > /usr/local/etc/php/conf.d/memory-limit.ini
 RUN apt-get update && \
     apt-get install -y wget unzip nodejs npm aria2 python3-pip
 RUN pip3 install youtube-dl
-#RUN wget -c -q -O facerecognition https://github.com/matiasdelellis/facerecognition/archive/$FR_BRANCH.zip \
-#  && unzip facerecognition \
-#  && mv facerecognition-*  /usr/src/nextcloud/facerecognition \
-#  && cd /usr/src/nextcloud/facerecognition \
-#  && make
+RUN wget -c -q -O facerecognition https://github.com/matiasdelellis/facerecognition/archive/$FR_BRANCH.zip \
+  && unzip facerecognition \
+  && rm facerecognition \
+  && mv facerecognition-*  /usr/src/nextcloud/facerecognition \
+  && cd /usr/src/nextcloud/facerecognition \
+  && make
+RUN wget -c -q -O ocdownloader https://github.com/Lohn/ocdownloader/archive/master.zip \
+  && unzip ocdownloader \
+  && rm ocdownloader \
+  && mv ocdownloader*  /usr/src/nextcloud/ocdownloader
