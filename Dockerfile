@@ -83,10 +83,10 @@ RUN echo memory_limit=2048M > /usr/local/etc/php/conf.d/memory-limit.ini
 # At this point you meet all the dependencies to install the application
 # If is available you can skip this step and install the application from the application store
 #
-ARG FR_BRANCH=0.7.0
 RUN apt-get update && \
     apt-get install -y wget unzip nodejs npm aria2 python3-pip
 RUN pip3 install youtube-dl
+ARG FR_BRANCH=v0.7.0
 RUN wget -c -q -O facerecognition https://github.com/matiasdelellis/facerecognition/archive/$FR_BRANCH.zip \
   && unzip facerecognition \
   && rm facerecognition \
