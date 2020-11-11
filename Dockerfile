@@ -1,4 +1,4 @@
-FROM nextcloud:19.0.3-apache as builder
+FROM nextcloud:20.0.1-apache as builder
 
 # Build and install dlib on builder
 
@@ -48,7 +48,7 @@ RUN git clone https://github.com/matiasdelellis/pdlib-min-test-suite.git \
 # If pass the tests, we are able to create the final image.
 #
 
-FROM nextcloud:19.0.3-apache
+FROM nextcloud:20.0.1-apache
 
 # Install dependencies to image
 
@@ -83,7 +83,7 @@ RUN echo memory_limit=2048M > /usr/local/etc/php/conf.d/memory-limit.ini
 # At this point you meet all the dependencies to install the application
 # If is available you can skip this step and install the application from the application store
 #
-#ARG FR_BRANCH=master
+ARG FR_BRANCH=0.7.0
 RUN apt-get update && \
     apt-get install -y wget unzip nodejs npm aria2 python3-pip
 RUN pip3 install youtube-dl
