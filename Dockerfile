@@ -50,6 +50,7 @@ RUN git clone https://github.com/matiasdelellis/pdlib-min-test-suite.git \
 
 FROM nextcloud:latest
 
+
 # Install dependencies to image
 
 RUN apt-get update ; \
